@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Masters in Mechanical Engineering Contracts</h1>
+            <p>We make it simple & easy</p>
+            <a href="/contact" class="btn">Get in Touch</a>
+        </div>
+    </section>
+
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2>Welcome to Shree Ashapura Febro & Construction</h2>
+                <p>We take great pleasure to introduce ourselves as specialized Contractors in the field of mechanical engineering construction. We are having more than 30 years of experience in the field of Fabrication and Erection of Steel structure, piping, Tank fabrication & various type of Engineering construction work.</p>
+                <a href="/about" class="btn">Read More</a>
+            </div>
+            <div class="about-image">
+                <img src="/images/about-image.jpg" alt="About Shree Ashapura">
+            </div>
+        </div>
+    </section>
+
+    <section class="services-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-industry"></i>
+                    <h3>Fabrication & Erection</h3>
+                    <p>Steel structures, piping, tanks and various engineering construction works.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-paint-roller"></i>
+                    <h3>Industrial Coating</h3>
+                    <p>High performing protective coating for various industrial applications.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-hard-hat"></i>
+                    <h3>Project Management</h3>
+                    <p>Complete project planning and execution with quality control.</p>
+                </div>
+            </div>
+            <a href="/services" class="btn">View All Services</a>
+        </div>
+    </section>
+
+    <section class="projects-section">
+        <div class="container">
+            <h2>Our Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="/images/project1.jpg" alt="Project 1">
+                    <div class="project-info">
+                        <h3>Edible Oil Plant</h3>
+                        <p>Noble Natural Resources</p>
+                        <a href="/projects" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="/images/project2.jpg" alt="Project 2">
+                    <div class="project-info">
+                        <h3>Benefication Plant</h3>
+                        <p>Jindal Saw Ltd.</p>
+                        <a href="/projects" class="btn">View Details</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="/images/project3.jpg" alt="Project 3">
+                    <div class="project-info">
+                        <h3>Pipe Rack</h3>
+                        <p>Bunge India</p>
+                        <a href="/projects" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+            <a href="/projects" class="btn">View All Projects</a>
+        </div>
+    </section>
+
+    <section class="clients-section">
+        <div class="container">
+            <h2>Our Esteemed Clients</h2>
+            <div class="clients-slider">
+                <div class="client-logo"><img src="/images/client1.png" alt="L&T"></div>
+                <div class="client-logo"><img src="/images/client2.png" alt="Jindal"></div>
+                <div class="client-logo"><img src="/images/client3.png" alt="Vopak"></div>
+                <div class="client-logo"><img src="/images/client4.png" alt="OPG"></div>
+                <div class="client-logo"><img src="/images/client5.png" alt="IFFCO"></div>
+            </div>
+            <a href="/clients" class="btn">View All Clients</a>
+        </div>
+    </section>
+
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-content">
+                <h2>Get in Touch</h2>
+                <p>We would be happy to discuss your project requirements and how we can assist you.</p>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> Behind TDO QRT - 3053 R, Bhachau - Kutch</p>
+                    <p><i class="fas fa-phone"></i> +91 XXXXX XXXXX</p>
+                    <p><i class="fas fa-envelope"></i> info@ashapuragroup.com</p>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="tel" name="phone" placeholder="Your Phone">
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <textarea name="message" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <%- include('partials/footer') %>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
