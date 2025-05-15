@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "main.js",
   "scripts": {
-    "dev": "node api/app.js",
-    "start": "node server.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "keywords": [],
   "author": "",
@@ -14,8 +14,7 @@
     "dotenv": "^16.5.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
-    "nodemailer": "^7.0.3",
-    "serverless-http": "^3.2.0"
+    "nodemailer": "^7.0.3"
   },
   "devDependencies": {
     "@vercel/node": "^5.1.16"
