@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const nodemailer = require("nodemailer");
+
 
 const app = express();
 
@@ -49,47 +49,7 @@ app.get("/contact", (req, res) => {
   });
 });
 
-// Email route
-app.post("/send-email", async (req, res) => {
-  try {
-    const { name, email, phone, subject, message } = req.body;
 
-    const transporter = nodemailer.createTransport({
-      host: "smtp.office365.com",
-      port: 587,
-      secure: false, // Must be false for STARTTLS
-      auth: {
-        user: process.env.OUTLOOK_EMAIL, // Outlook email
-        pass: process.env.OUTLOOK_PASS, // App password or real password (see below)
-      },
-      tls: {
-        rejectUnauthorized: false, // Helps avoid TLS errors in dev
-      },
-    });
-
-    const mailOptions = {
-      from: `"${name}" <${process.env.OUTLOOK_EMAIL}>`,
-      to: process.env.OUTLOOK_EMAIL,
-      replyTo: email,
-      subject: `New Contact Form Submission: ${subject}`,
-      html: `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Message:</strong> ${message}</p>
-      `,
-    };
-
-    await transporter.sendMail(mailOptions);
-    res.status(200).json({ message: "Email sent successfully!" });
-  } catch (error) {
-    console.error("Error sending email:", error);
-    res.status(500).json({
-      message: "Error sending email",
-      error: error.message,
-    });
-  }
-});
 
 // Start server
 const PORT = process.env.PORT || 3000;
