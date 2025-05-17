@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const nodemailer = require("nodemailer");
+
 const app = express();
 
 // Middleware
@@ -48,46 +49,43 @@ app.get("/contact", (req, res) => {
   });
 });
 
+// Email sending route
 app.post("/send-email", async (req, res) => {
   try {
     const { name, email, phone, subject, message } = req.body;
 
-    // Create a transporter for Outlook
+    const smtpPort = parseInt(process.env.EMAIL_PORT);
+    const isSecure = smtpPort === 465;
+
     const transporter = nodemailer.createTransport({
-      host: "smtp.office365.com", // Outlook SMTP server
-      port: 587, // Outlook SMTP port (587 is the default for TLS)
-      secure: false, // true for 465, false for other ports
+      host: process.env.EMAIL_HOST,
+      port: smtpPort,
+      secure: isSecure, // true for 465, false for 587
       auth: {
-        user: process.env.EMAIL_USER, // Your Outlook email
-        pass: process.env.EMAIL_PASS, // Your Outlook password or app password
-      },
-      tls: {
-        ciphers: "SSLv3", // Sometimes needed for Outlook
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS,
       },
     });
 
-    // Email options
     const mailOptions = {
-      from: `"${name}" <${process.env.OUTLOOK_EMAIL_USER}>`, // Use your Outlook email as the sender
-      replyTo: email, // Set the reply-to address to the form submitter's email
-      to: process.env.OUTLOOK_EMAIL_USER, // Send to yourself (or any other recipient)
+      from: `"${name}" <${process.env.EMAIL_USER}>`,
+      to: process.env.EMAIL_USER,
+      replyTo: email,
       subject: `New Contact Form Submission: ${subject}`,
       text: `
-                Name: ${name}
-                Email: ${email}
-                Phone: ${phone}
-                Message: ${message}
-            `,
-      // You can also add HTML version
+        Name: ${name}
+        Email: ${email}
+        Phone: ${phone}
+        Message: ${message}
+      `,
       html: `
-                <p><strong>Name:</strong> ${name}</p>
-                <p><strong>Email:</strong> ${email}</p>
-                <p><strong>Phone:</strong> ${phone}</p>
-                <p><strong>Message:</strong> ${message}</p>
-            `,
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+        <p><strong>Message:</strong> ${message}</p>
+      `,
     };
 
-    // Send email
     await transporter.sendMail(mailOptions);
     res.status(200).json({ message: "Email sent successfully!" });
   } catch (error) {
