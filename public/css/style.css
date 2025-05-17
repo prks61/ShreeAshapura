@@ -908,7 +908,7 @@ tr:hover {
     position: fixed;
     top: 30px;
 
-    width: 100%;
+    width: 0;
   }
 
   nav {
