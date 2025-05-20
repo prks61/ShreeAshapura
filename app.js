@@ -61,7 +61,7 @@ app.post("/send-email", async (req, res) => {
       secure: true, // SSL/TLS as shown in your configuration
       auth: {
         user: process.env.EMAIL_USER || "admin@theashapura.com",
-        pass: "ashapura#12@"
+        pass: process.env.EMAIL_PASS
       },
       tls: {
         // This helps with some certificate issues
